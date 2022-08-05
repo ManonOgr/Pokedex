@@ -4,7 +4,7 @@ import "./App.css";
 
 import { api, apispecies, apievolution } from "./services/api";
 
-import { Navbar } from "./components/Navbar";
+import  Navbar  from "./components/Navbar";
 import CardDetails from "./components/CardDetails";
 import { usePokemons } from "./services/pokemon";
 import { useParams } from "react-router-dom";

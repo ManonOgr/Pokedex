@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 
+import { useSelector } from "react-redux";
+
 import { Badge } from "@mui/material";
-export class Navbar extends Component {
-  render() {
+
+function Navbar () {
+  
+  const state = useSelector(state=>state.slicelike)
     return (
       <nav>
         <div className="logo">
@@ -16,13 +20,13 @@ export class Navbar extends Component {
         </div>
 
         <div className="numberpokemon">
-          <Badge badgeContent={124} color="error" max={8000}>
+          <Badge badgeContent={state.length} color="error" max={8000}>
             <img src="https://img.icons8.com/plasticine/64/000000/pikachu-pokemon.png" />
           </Badge>
         </div>
       </nav>
     );
-  }
+  
 }
 
 export default Navbar;
