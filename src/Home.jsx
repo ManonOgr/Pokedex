@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
 
 import Navbar  from "./components/Navbar";
 import Card from "./components/Cards";
-import {SearchPoke} from "./components/Search";
+import SearchPoke from "./components/Search";
 
 import pokelike from "./images/pokeball.png";
 import pokedislike from "./images/pokeballnb.png"
@@ -13,9 +13,13 @@ import pokedislike from "./images/pokeballnb.png"
 import { usePokemons } from "./services/pokemon";
 
 function Home() {
-  const [count, setCount] = useState(0);
-  const pokemons = usePokemons();
+  
+  const pokemon = usePokemons();
   const state = useSelector(state=>state.slicelike)
+  const [filtretab, setfiltretab] = useState([]);
+  const valuesearchbar = useRef(null);
+  const [pokemons, setpokemons] = useState([]);
+
 
 let currentball = pokedislike;
 
@@ -28,20 +32,43 @@ if (state.find((value) => value.name === pokename) === undefined) {
   return currentball = pokelike
 }
 }
+
+const filter = () => {
+  if (valuesearchbar.current !== null) {
+    let filtredpoke = filtretab.filter((element) => {
+      return element.name.toLowerCase().includes(valuesearchbar.current.value)
+    });
+setpokemons(filtredpoke)
+  }
+  if (valuesearchbar.current.value === "") {
+    setpokemons(filtretab);
+  }
+}
+
+useEffect(()=>{
+  pokemon?.then(response =>{
+    setpokemons(response)
+    setfiltretab(response)
+    console.log(response)
+  })
+}, [])
+
+
+
   return (
     <div className="App">
       <Navbar />
-      <SearchPoke />
+      <SearchPoke reference={valuesearchbar} change={filter}/>
       <div className="containerCard">
-        {pokemons.map((pokemon, i) => (
+        {pokemons?.map((pokemon, i) => (
           <Card
-            key={pokemon.name}
-            name={pokemon.name}
-            number={i + 1}
-            img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
-              i + 1
-            }.png`}
-            currentball={seeball(pokemon.name)}
+            key={pokemon?.name}
+            name={pokemon?.name}
+            number={pokemon?.url.substr(34).slice(0, -1)}
+            img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${
+              pokemon?.url.substr(34).slice(0, -1)
+            }.svg`}
+            currentball={seeball(pokemon?.name)}
           />
         ))}
       </div>

@@ -9,6 +9,9 @@ import CardDetails from "./components/CardDetails";
 import { usePokemons } from "./services/pokemon";
 import { useParams } from "react-router-dom";
 
+import { Provider } from "react-redux";
+import { store } from "./services/pokestore";
+
 function Details() {
   const [count, setCount] = useState(0);
   const { pokemonId } = useParams();
@@ -44,10 +47,12 @@ function Details() {
 
 
   return (
+    <Provider store={store}>
     <div className="App">
       <Navbar />
       <CardDetails datapokemon={datapokemon} dataspecies={dataspecies} dataevolution={dataevolution}/>
     </div>
+    </Provider>
   );
 }
 
