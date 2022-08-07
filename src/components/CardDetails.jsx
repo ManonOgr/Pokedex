@@ -38,19 +38,12 @@ function CardDetails({ datapokemon , dataspecies, dataevolution}) {
         </div>
 
         <div className="containerfirst">
-          <div className="containerfirstbtn">
-            <button key={datapokemon?.types[0].type.name}>{datapokemon?.types[0].type.name}</button>
-            <button key={datapokemon?.types[1]?.type.name}>{datapokemon?.types[1]?.type.name}</button>
+          <div className="containerfirstbtn"> {datapokemon?.types.map(el =>{ return <button key={el.type.name}>{el.type.name}</button>})}
+
           </div>
 
           <div>
             <p className="number">#{datapokemon?.id}</p>
-          </div>
-
-          <div className="containerglike">
-            <div className="containerlike">
-              <img src={pokelike} alt="pokelike" />
-            </div>
           </div>
         </div>
 

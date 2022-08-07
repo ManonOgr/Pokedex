@@ -10,7 +10,7 @@ import SearchPoke from "./components/Search";
 import pokelike from "./images/pokeball.png";
 import pokedislike from "./images/pokeballnb.png"
 
-import { usePokemons } from "./services/pokemon";
+import {usePokemons} from "./services/pokemon";
 
 function Home() {
   
@@ -20,6 +20,7 @@ function Home() {
   const valuesearchbar = useRef(null);
   const [pokemons, setpokemons] = useState([]);
 
+console.log(pokemons)
 
 let currentball = pokedislike;
 
@@ -77,3 +78,4 @@ useEffect(()=>{
 }
 
 export default Home;
+

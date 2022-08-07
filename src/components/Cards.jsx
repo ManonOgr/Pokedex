@@ -28,7 +28,10 @@ const checkiflike = (id,name) =>{
         <p>#{props.number}</p>
       </div>
 
-      <img src={props.img} alt="pokemon" />
+<div className="containerimgpoke">
+<img src={props.img} alt="pokemon" />
+</div>
+      
 
       <div className="containerg">
         <Link to={`/details/${props.number}`}>

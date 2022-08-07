@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 
 import { Badge } from "@mui/material";
 
+import { Link } from "react-router-dom";
+
 function Navbar () {
   
   const state = useSelector(state=>state.slicelike)
@@ -19,11 +21,14 @@ function Navbar () {
           
         </div>
 
-        <div className="numberpokemon">
+<Link to={`/pokedex`}>
+<div className="numberpokemon">
           <Badge badgeContent={state.length} color="error" max={8000}>
             <img src="https://img.icons8.com/plasticine/64/000000/pikachu-pokemon.png" />
           </Badge>
         </div>
+</Link>
+     
       </nav>
     );
   

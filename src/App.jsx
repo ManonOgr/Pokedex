@@ -18,6 +18,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="*" element={<Home />} />
         <Route path="/details/:pokemonId" element={<Details />} />
+        <Route path="/pokedex" element={<Pokedex />} />
       </Routes>
     </BrowserRouter>
     </Provider>
