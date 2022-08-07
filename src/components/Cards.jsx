@@ -14,9 +14,7 @@ const state = useSelector(state =>state.slicelike)
 const checkiflike = (id,name) =>{
   if(state.find((value)=> value.name === name) === undefined){
        dispatch(addlike({id, name}))
-       console.log("bien joué")
   }else{
-       console.log("déjà ajouté")
        dispatch(deletelike({id, name}))
    }
 }

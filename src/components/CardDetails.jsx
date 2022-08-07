@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 
 function CardDetails({ datapokemon , dataspecies, dataevolution}) {
-  console.log(datapokemon);
   let tabevo = [];
   let str = dataevolution?.species.url.substr(42);
   let id = Number(str?.slice(0,-1));

@@ -20,11 +20,7 @@ function Home() {
   const valuesearchbar = useRef(null);
   const [pokemons, setpokemons] = useState([]);
 
-console.log(pokemons)
-
 let currentball = pokedislike;
-
-console.log('state = ', state)
 
 function seeball(pokename){
 if (state.find((value) => value.name === pokename) === undefined) {
@@ -50,7 +46,6 @@ useEffect(()=>{
   pokemon?.then(response =>{
     setpokemons(response)
     setfiltretab(response)
-    console.log(response)
   })
 }, [])
 

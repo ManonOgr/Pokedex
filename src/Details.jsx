@@ -27,19 +27,16 @@ function Details() {
 
   useEffect(() => {
     data.then((res) => {
-      console.log(res.data);
       setdatapokemon(res.data);
     });
   }, []);
 
   useEffect(() => {
     species.then((res) => {
-      console.log(res.data);
       setdataspecies(res.data);
-      console.log(res.data.evolution_chain.url)
       apievolution(res.data.evolution_chain.url).then(res=>{
         setdataevolution(res.data.chain);
-        console.log(res.data.chain)
+      
       })
     });
   }, []);
